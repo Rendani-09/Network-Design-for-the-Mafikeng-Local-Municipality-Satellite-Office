@@ -24,19 +24,19 @@ The repository documents the project from the initial network design through imp
 
 ## Project Requirements
 
-The network is designed to provide connectivity for the municipality's:
+The network provides connectivity for the municipality's:
 
-- Public Counter 
+- Public Counter
 - Licensing & Permits
 - Municipal Administration
 - Finance
 - Shared Print Services
 
-The project also includes the following specific requirements:
+The project includes the following specific requirements:
 
 - **Security constraint:** Public Counter staff must not access the administrative network.
 - **Technical challenge:** Static Routing with multi-router path control.
-- **Client change request (CR8):** A shared printer zone must serve two departments that currently cannot print.
+- **Client change request (CR8):** A shared printer zone must serve two departments that previously could not print.
 
 The selected departments for the shared printer service are **Licensing & Permits** and **Municipal Administration**.
 
@@ -44,7 +44,7 @@ Detailed requirements, design decisions, topology diagrams, subnetting calculati
 
 ## Network Overview
 
-The proposed network uses three routers connected in a multi-router topology:
+The implemented network uses three routers connected in a multi-router topology:
 
 ```text
 MUN-R1 -------- MUN-R2 -------- MUN-R3
@@ -52,76 +52,107 @@ MUN-R1 -------- MUN-R2 -------- MUN-R3
 MUN-SW1          MUN-SW2          MUN-SW3
 ```
 
-The network is logically divided into departmental VLANs and subnets using the assigned `192.168.43.0/24` address space.
+The network is logically divided into five departmental/service VLANs using the assigned `192.168.43.0/24` address space. Static routing provides connectivity between the three routers, while 802.1Q trunk links support the required VLANs between routers and switches.
 
-Further technical details are available in the project documentation contained in this repository.
+### Implemented VLANs
+
+| VLAN | Department / Service | Network |
+|---|---|---|
+| 10 | Public Counter / Citizen Services | `192.168.43.0/27` |
+| 20 | Licensing & Permits | `192.168.43.32/27` |
+| 30 | Municipal Administration | `192.168.43.64/27` |
+| 40 | Finance | `192.168.43.96/27` |
+| 50 | Shared Printer Zone | `192.168.43.128/28` |
 
 ## Project Milestones
 
 ### Milestone 1 — Client Design Review
-**Due: 28 August 2026**
+**Due: 28 August 2026 — Completed**
 
-Covers the initial client requirements, physical and logical network design, IP addressing plan, and project repository.
+Covered the client requirements, physical and logical network design, IP addressing plan, VLAN design, security design, static routing design, and shared printer solution.
 
 ### Milestone 2 — Client Implementation Review
-**Due: 2 October 2026**
+**Due: 2 October 2026 — Current Phase**
 
-Includes:
+Milestone 2 focuses on the working Cisco Packet Tracer implementation and requires:
 
 1. Working Packet Tracer file
-2. Assigned feature implementation
+2. Assigned feature implemented
 3. Testing evidence
 4. Updated GitHub portfolio
 
 ### Final Submission
 **Due: 16 October 2026**
 
-Includes the completed network, portfolio of evidence, technical report, and project demonstration.
+The final submission includes the completed Packet Tracer project, GitHub portfolio of evidence, technical report, 15–20 minute INSET video demonstration, and any additional required files.
+
+## Milestone 2 Implementation Status
+
+The network has progressed from the design stage to a working Packet Tracer implementation. The following functionality has been implemented and verified:
+
+- VLANs 10, 20, 30, 40 and 50 configured on the appropriate switches.
+- 802.1Q trunking configured between the switches and routers.
+- Router-on-a-stick inter-VLAN gateways configured for the departmental VLANs.
+- Point-to-point WAN links operational between MUN-R1–MUN-R2 and MUN-R2–MUN-R3.
+- Static routes configured across MUN-R1, MUN-R2 and MUN-R3.
+- Multi-router forwarding verified across the MUN-R1 → MUN-R2 → MUN-R3 path.
+- CR8 shared printer access verified for Licensing & Permits and Municipal Administration.
+- Extended ACL `PUBLIC_COUNTER_RESTRICTION` implemented on MUN-R1 to prevent Public Counter access to the Administration network.
+- ACL operation verified through connectivity testing and ACL hit counters.
+
+## Testing Summary
+
+Representative verification tests completed during Milestone 2 include:
+
+| Test | Expected Result | Result |
+|---|---|---|
+| CS-PC01 → VLAN 10 gateway | Reachable | Pass |
+| LP-PC01 → VLAN 20 gateway | Reachable | Pass |
+| ADM-PC01 → VLAN 30 gateway | Reachable | Pass |
+| FIN-PC01 → VLAN 40 gateway | Reachable | Pass |
+| MUN-R1 → MUN-R2 WAN | Reachable | Pass |
+| MUN-R2 → MUN-R3 WAN | Reachable | Pass |
+| LP-PC01 → PRINT-01 | Reachable | Pass |
+| ADM-PC01 → PRINT-01 | Reachable | Pass |
+| CS-PC01 → ADM-PC01 | Blocked | Pass — Blocked as required |
+| LP-PC01 → ADM-PC01 | Reachable | Pass |
+| LP-PC01 → ADM-PC01 traceroute | R1 → R2 → R3 | Confirmed |
+
+The traceroute from LP-PC01 to ADM-PC01 confirmed the multi-router path through MUN-R1, MUN-R2 and MUN-R3. Testing of the security constraint also confirmed that traffic from the Public Counter network to the Administration network is denied while authorised traffic remains operational.
 
 ## Repository Contents
 
 ```text
-CMPG325-Mafikeng-Municipality-Network/
+Network-Design-for-the-Mafikeng-Local-Municipality-Satellite-Office/
 │
 ├── README.md
-├── docs/
-├── diagrams/
-├── packet-tracer/
-└── evidence/
+├── Docs/
+└── Diagrams/
 ```
 
-### `docs/`
-Project documentation and milestone submissions.
+### `Docs/`
+Contains project documentation and milestone submissions. The Milestone 1 Client Design Review is currently available, with Milestone 2 documentation/evidence being prepared.
 
-### `diagrams/`
-Physical and logical network topology diagrams.
-
-### `packet-tracer/`
-Cisco Packet Tracer project files.
-
-### `evidence/`
-Configuration, testing, verification, and troubleshooting evidence collected during development.
+### `Diagrams/`
+Contains the physical and logical topology diagrams created during the design phase. Implementation evidence will be added as the Milestone 2 portfolio is updated.
 
 ## Current Status
 
-**Current Phase:** Milestone 1 — Client Design Review
+**Current Phase: Milestone 2 — Client Implementation Review**
 
-The initial network design, addressing plan, topology, and project documentation are currently being prepared for the Milestone 1 submission.
+The core Packet Tracer network has been implemented and tested. Current work is focused on organising implementation/testing evidence, updating the GitHub portfolio, and preparing the Milestone 2 submission for **2 October 2026 at 23:55**.
 
-## Documentation
+## Documentation and Evidence
 
-Detailed technical information is maintained in the project documents.
-
-This includes:
+The project portfolio covers:
 
 - Client requirements analysis
-- Physical topology
-- Logical topology
+- Physical and logical topology
 - Device inventory
-- VLAN design
+- VLAN design and implementation
 - VLSM and IP addressing
-- Static routing design
-- Security and ACL design
-- Shared printer solution
-- Implementation evidence
-- Testing and troubleshooting results
+- Static routing and multi-router path verification
+- Security ACL implementation and testing
+- Shared printer solution (CR8)
+- Connectivity testing and verification
+- Troubleshooting and implementation evidence
