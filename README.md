@@ -4,9 +4,7 @@
 
 This repository contains the portfolio of evidence for my **CMPG 325 Computer Networks Individual Semester Project**.
 
-The project involves the design and implementation of a network solution for the **Mafikeng Local Municipality Satellite Office** using **Cisco Packet Tracer**.
-
-The repository documents the project from the initial network design through implementation, testing, troubleshooting, and final demonstration.
+The project involves the design and implementation of a network solution for the **Mafikeng Local Municipality Satellite Office** using **Cisco Packet Tracer**. The repository documents the project from the initial network design through implementation, testing, troubleshooting, and final demonstration.
 
 ## Project Information
 
@@ -24,23 +22,13 @@ The repository documents the project from the initial network design through imp
 
 ## Project Requirements
 
-The network provides connectivity for the municipality's:
+The network provides connectivity for the municipality's Public Counter, Licensing & Permits, Municipal Administration, Finance, and Shared Printer Zone.
 
-- Public Counter
-- Licensing & Permits
-- Municipal Administration
-- Finance
-- Shared Print Services
-
-The project includes the following specific requirements:
-
-- **Security constraint:** Public Counter staff must not access the administrative network.
-- **Technical challenge:** Static Routing with multi-router path control.
+- **Security constraint:** Public Counter staff must not access the Administration network.
+- **Technical challenge:** Static Routing — Multi-Router Path Control.
 - **Client change request (CR8):** A shared printer zone must serve two departments that previously could not print.
 
 The selected departments for the shared printer service are **Licensing & Permits** and **Municipal Administration**.
-
-Detailed requirements, design decisions, topology diagrams, subnetting calculations and IP addressing are documented in the relevant milestone documentation.
 
 ## Network Overview
 
@@ -52,13 +40,13 @@ MUN-R1 -------- MUN-R2 -------- MUN-R3
 MUN-SW1          MUN-SW2          MUN-SW3
 ```
 
-The network is logically divided into five departmental/service VLANs using the assigned `192.168.43.0/24` address space. Static routing provides connectivity between the three routers, while 802.1Q trunk links support the required VLANs between routers and switches.
+The network is divided into five departmental/service VLANs using the assigned `192.168.43.0/24` address space. Static routing provides the required inter-network reachability across the implemented subnets, subject to the configured security policy. 802.1Q trunks carry the required VLANs between routers and switches.
 
 ### Implemented VLANs
 
 | VLAN | Department / Service | Network |
 |---|---|---|
-| 10 | Public Counter / Citizen Services | `192.168.43.0/27` |
+| 10 | Public Counter (configured VLAN name: `CITIZEN_SERVICES`) | `192.168.43.0/27` |
 | 20 | Licensing & Permits | `192.168.43.32/27` |
 | 30 | Municipal Administration | `192.168.43.64/27` |
 | 40 | Finance | `192.168.43.96/27` |
@@ -72,14 +60,16 @@ The network is logically divided into five departmental/service VLANs using the 
 Covered the client requirements, physical and logical network design, IP addressing plan, VLAN design, security design, static routing design, and shared printer solution.
 
 ### Milestone 2 — Client Implementation Review
-**Due: 2 October 2026 — Current Phase**
+**Due: 2 October 2026 — Implementation and evidence completed**
 
-Milestone 2 focuses on the working Cisco Packet Tracer implementation and requires:
+Milestone 2 requires:
 
 1. Working Packet Tracer file
 2. Assigned feature implemented
 3. Testing evidence
 4. Updated GitHub portfolio
+
+The working Packet Tracer project, implementation/testing report, and testing evidence are included in this repository.
 
 ### Final Submission
 **Due: 16 October 2026**
@@ -88,7 +78,7 @@ The final submission includes the completed Packet Tracer project, GitHub portfo
 
 ## Milestone 2 Implementation Status
 
-The network has progressed from the design stage to a working Packet Tracer implementation. The following functionality has been implemented and verified:
+The following functionality has been implemented and verified:
 
 - VLANs 10, 20, 30, 40 and 50 configured on the appropriate switches.
 - 802.1Q trunking configured between the switches and routers.
@@ -102,8 +92,6 @@ The network has progressed from the design stage to a working Packet Tracer impl
 
 ## Testing Summary
 
-Representative verification tests completed during Milestone 2 include:
-
 | Test | Expected Result | Result |
 |---|---|---|
 | CS-PC01 → VLAN 10 gateway | Reachable | Pass |
@@ -115,10 +103,10 @@ Representative verification tests completed during Milestone 2 include:
 | LP-PC01 → PRINT-01 | Reachable | Pass |
 | ADM-PC01 → PRINT-01 | Reachable | Pass |
 | CS-PC01 → ADM-PC01 | Blocked | Pass — Blocked as required |
-| LP-PC01 → ADM-PC01 | Reachable | Pass |
+| LP-PC02 → ADM-PC01 | Reachable | Pass |
 | LP-PC01 → ADM-PC01 traceroute | R1 → R2 → R3 | Confirmed |
 
-The traceroute from LP-PC01 to ADM-PC01 confirmed the multi-router path through MUN-R1, MUN-R2 and MUN-R3. Testing of the security constraint also confirmed that traffic from the Public Counter network to the Administration network is denied while authorised traffic remains operational.
+The traceroute from LP-PC01 to ADM-PC01 confirmed the multi-router path through MUN-R1, MUN-R2 and MUN-R3. Security testing confirmed that traffic from the Public Counter network to the Administration network is denied while authorised traffic remains operational.
 
 ## Repository Contents
 
@@ -127,20 +115,35 @@ Network-Design-for-the-Mafikeng-Local-Municipality-Satellite-Office/
 │
 ├── README.md
 ├── Docs/
-└── Diagrams/
+│   ├── Milestone_1_Client_Design_Review.pdf
+│   └── Milestone_2_Client_Implementation_Review .pdf
+├── Diagrams/
+│   ├── Logical Topology.png
+│   └── Physical Topology.png
+├── Packet Tracer/
+│   └── Mafikeng Local Municipality Satellite Office.pkt
+└── Testing Evidence/
+    ├── README.md
+    └── 01–14 implementation and verification screenshots
 ```
 
 ### `Docs/`
-Contains project documentation and milestone submissions. The Milestone 1 Client Design Review is currently available, with Milestone 2 documentation/evidence being prepared.
+Contains the Milestone 1 Client Design Review and Milestone 2 Client Implementation Review documentation.
 
 ### `Diagrams/`
-Contains the physical and logical topology diagrams created during the design phase. Implementation evidence will be added as the Milestone 2 portfolio is updated.
+Contains the physical and logical topology diagrams created during the design phase.
+
+### `Packet Tracer/`
+Contains the working Cisco Packet Tracer `.pkt` implementation for the Mafikeng Local Municipality Satellite Office network.
+
+### `Testing Evidence/`
+Contains 14 implementation and verification screenshots plus an evidence index explaining what each screenshot demonstrates.
 
 ## Current Status
 
-**Current Phase: Milestone 2 — Client Implementation Review**
+**Milestone 2 implementation and evidence are complete and organised for the Client Implementation Review due 2 October 2026 at 23:55.**
 
-The core Packet Tracer network has been implemented and tested. Current work is focused on organising implementation/testing evidence, updating the GitHub portfolio, and preparing the Milestone 2 submission for **2 October 2026 at 23:55**.
+The repository now contains the working Packet Tracer file, milestone documentation, topology diagrams, and organised testing evidence. Work remaining for the overall semester project relates to the final submission and technical demonstration due 16 October 2026.
 
 ## Documentation and Evidence
 
