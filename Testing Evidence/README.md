@@ -13,12 +13,12 @@ This folder contains implementation and verification evidence for the CMPG 325 C
 
 | # | Evidence file | What it demonstrates |
 |---|---|---|
-| 01 | `01-MUN-SW1-VLANs-and-Trunk.png` | VLAN 10 (Citizen Services) and VLAN 20 (Licensing & Permits) are configured on MUN-SW1, with the router uplink operating as an 802.1Q trunk. |
+| 01 | `01-MUN-SW1-VLANs-and-Trunk.png` | VLAN 10 (Public Counter; configured VLAN name `CITIZEN_SERVICES`) and VLAN 20 (Licensing & Permits) are configured on MUN-SW1, with the router uplink operating as an 802.1Q trunk. |
 | 02 | `02-MUN-SW2-Printer-VLAN-and-Trunk.png` | VLAN 50 (Shared Printer Zone) is configured on MUN-SW2 and carried over the 802.1Q trunk to MUN-R2. |
 | 03 | `03-MUN-SW3-VLANs-and-Trunk.png` | VLAN 30 (Administration) and VLAN 40 (Finance) are configured on MUN-SW3, with the router uplink operating as an 802.1Q trunk. |
 | 04 | `04-MUN-R1-Static-Routing.png` | MUN-R1 routing table, including static routes toward the remote Administration, Finance and Shared Printer networks through MUN-R2. |
 | 05 | `05-MUN-R2-Static-Routing.png` | MUN-R2 routing table, showing static routes toward networks located behind both MUN-R1 and MUN-R3. |
-| 06 | `06-MUN-R3-Static-Routing.png` | MUN-R3 routing table, including static routes toward the remote Citizen Services, Licensing & Permits and Shared Printer networks through MUN-R2. |
+| 06 | `06-MUN-R3-Static-Routing.png` | MUN-R3 routing table, including static routes toward the remote Public Counter, Licensing & Permits and Shared Printer networks through MUN-R2. |
 | 07 | `07-Multi-Router-Path-Traceroute.png` | Traceroute from the Licensing & Permits network to Administration. The path traverses MUN-R1 → MUN-R2 → MUN-R3, verifying the assigned multi-router static-routing challenge. |
 | 08 | `08-LP-PC01-to-Shared-Printer.png` | Successful connectivity from Licensing & Permits to PRINT-01 (`192.168.43.130`), verifying the first authorised department in CR8. |
 | 09 | `09-ADM-PC01-to-Shared-Printer.png` | Successful connectivity from Municipal Administration to PRINT-01 (`192.168.43.130`), verifying the second authorised department in CR8. |
