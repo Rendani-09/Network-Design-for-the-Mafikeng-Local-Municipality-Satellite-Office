@@ -60,9 +60,9 @@ The network is divided into five departmental/service VLANs using the assigned `
 Covered the client requirements, physical and logical network design, IP addressing plan, VLAN design, security design, static routing design, and shared printer solution.
 
 ### Milestone 2 — Client Implementation Review
-**Due: 2 October 2026 — Implementation and evidence completed**
+**Due: 2 October 2026 — Completed**
 
-Milestone 2 requires:
+Milestone 2 requirements were completed:
 
 1. Working Packet Tracer file
 2. Assigned feature implemented
@@ -141,9 +141,9 @@ Contains 14 implementation and verification screenshots plus an evidence index e
 
 ## Current Status
 
-**Milestone 2 implementation and evidence are complete and organised for the Client Implementation Review due 2 October 2026 at 23:55.**
+**Project implementation is complete. Milestone 1 and Milestone 2 are completed, and the GitHub portfolio has been updated with the final implementation and testing evidence.**
 
-The repository now contains the working Packet Tracer file, milestone documentation, topology diagrams, and organised testing evidence. Work remaining for the overall semester project relates to the final submission and technical demonstration due 16 October 2026.
+The completed repository contains the working Packet Tracer file, milestone documentation, topology diagrams, and organised testing evidence. The only remaining project deliverable is the **15–20 minute INSET video presentation/demonstration** for the final submission due 16 October 2026.
 
 ## Documentation and Evidence
 
