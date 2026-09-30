@@ -2,9 +2,9 @@
 
 ## About the Project
 
-This repository contains the portfolio of evidence for my **CMPG 325 Computer Networks Individual Semester Project**.
+This repository contains the completed portfolio of evidence for my **CMPG 325 Computer Networks Individual Semester Project**.
 
-The project involves the design and implementation of a network solution for the **Mafikeng Local Municipality Satellite Office** using **Cisco Packet Tracer**. The repository documents the project from the initial network design through implementation, testing, troubleshooting, and final demonstration.
+The project involved the design and implementation of a network solution for the **Mafikeng Local Municipality Satellite Office** using **Cisco Packet Tracer**. The repository documents the project from the initial network design through implementation, testing, troubleshooting, and final evidence.
 
 ## Project Information
 
@@ -71,12 +71,13 @@ Milestone 2 requirements were completed:
 
 The working Packet Tracer project, implementation/testing report, and testing evidence are included in this repository.
 
-### Final Submission
-**Due: 16 October 2026**
+## Final Project Status
 
-The final submission includes the completed Packet Tracer project, GitHub portfolio of evidence, technical report, 15–20 minute INSET video demonstration, and any additional required files.
+**The CMPG 325 project is complete.**
 
-## Milestone 2 Implementation Status
+All required project implementation, documentation, testing, and evidence have been completed and organised in this repository.
+
+## Implementation Status
 
 The following functionality has been implemented and verified:
 
@@ -139,15 +140,9 @@ Contains the working Cisco Packet Tracer `.pkt` implementation for the Mafikeng 
 ### `Testing Evidence/`
 Contains 14 implementation and verification screenshots plus an evidence index explaining what each screenshot demonstrates.
 
-## Current Status
-
-**Project implementation is complete. Milestone 1 and Milestone 2 are completed, and the GitHub portfolio has been updated with the final implementation and testing evidence.**
-
-The completed repository contains the working Packet Tracer file, milestone documentation, topology diagrams, and organised testing evidence. The only remaining project deliverable is the **15–20 minute INSET video presentation/demonstration** for the final submission due 16 October 2026.
-
 ## Documentation and Evidence
 
-The project portfolio covers:
+The completed project portfolio covers:
 
 - Client requirements analysis
 - Physical and logical topology
@@ -159,3 +154,7 @@ The project portfolio covers:
 - Shared printer solution (CR8)
 - Connectivity testing and verification
 - Troubleshooting and implementation evidence
+
+## Completion Statement
+
+**All GitHub project requirements and supporting evidence are complete.**
